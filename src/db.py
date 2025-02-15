@@ -34,3 +34,19 @@ def store_extraction_result(file_name, extraction_results):
     """, (file_name, results_json))
     conn.commit()
     conn.close()
+
+def get_all_extracted_data():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM extracted_data")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+
+def clear_extracted_data():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM extracted_data")
+    conn.commit()
+    conn.close()
