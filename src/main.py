@@ -20,7 +20,7 @@ if uploaded_file:
     # Process the document using the Gemini API
     extraction_results = gemini_api.extract_data(file_path)
     st.write("Extraction Finished")
-    # st.write("Extraction Results:", extraction_results)
+    st.write("Extraction Results:", extraction_results)
 
     # Store the result in the SQLite database
     db.store_extraction_result(uploaded_file.name, extraction_results)
